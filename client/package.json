@@ -1,0 +1,39 @@
+{
+  "name": "list-app-client",
+  "version": "1.0.0",
+  "description": "List application client",
+  "author": "Pierre Imhoff <imhoff.pierre.mc@gmail.com>",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open --hot --host 0.0.0.0",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^4.3.1",
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "css-loader": "^1.0.0",
+    "sass": "^1.30.0",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.8",
+    "react-hot-loader": "^4.13.0"
+  },
+  "proxy" : "http://list-api:5000",
+  "repository": {
+    "type": "git",
+    "url": "list-app"
+  },
+  "keywords": [
+    "list",
+    "test"
+  ],
+  "license": "ISC"
+}
