@@ -1,35 +1,35 @@
-version: "3"
+version: '3'
 services:
-  list-api:
-    container_name: list-api
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    image: list/api
-    ports:
-      - "3080:3080"
-    volumes:
-      - ./api:/usr/src/app
-    depends_on:
-      - list-db
-    environment:
-      DATABASE_URL: postgres://listapp@postgres/list
+    list-api:
+        container_name: list-api
+        build:
+            context: ./api
+            dockerfile: Dockerfile
+        image: list/api
+        ports:
+            - '0.0.0.0:5001:5000'
+        volumes:
+            - ./api:/usr/src/app
+        depends_on:
+            - list-db
+        environment:
+            DATABASE_URL: postgres://listapp@postgres/list
 
-  list-client:
-    container_name: react-client
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    image: list/client
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./client:/usr/src/app
-    depends_on:
-      - list-api
+    list-client:
+        container_name: react-client
+        build:
+            context: ./client
+            dockerfile: Dockerfile
+        image: list/client
+        ports:
+            - '0.0.0.0:3000:5173'
+        volumes:
+            - ./client:/usr/src/app
+        depends_on:
+            - list-api
 
-  list-db:
-    image: postgres:9.6.2-alpine
-    environment:
-      POSTGRES_USER: listapp
-      POSTGRES_DB: list
+    list-db:
+        image: postgres:9.6.2-alpine
+        environment:
+            POSTGRES_USER: listapp
+            POSTGRES_DB: list

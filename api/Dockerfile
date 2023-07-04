@@ -2,6 +2,8 @@ FROM node:lts-slim
 
 RUN mkdir -p /usr/src/app
 
+RUN npm install --global nodemon
+
 WORKDIR /usr/src/app
 
 COPY package*.json ./
