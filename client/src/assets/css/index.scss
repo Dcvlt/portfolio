@@ -1,0 +1,549 @@
+@import './_theme.scss';
+
+html {
+    overflow-y: scroll;
+}
+
+:root {
+    @include themed() {
+        color: t('text');
+        background: t('main-background');
+    }
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+
+    --transition: 0.5s ease;
+}
+
+#root {
+    max-width: 640px;
+    text-align: center;
+}
+
+@media screen and (min-width: 800px) {
+    #root {
+        max-width: 1280px;
+        text-align: center;
+    }
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+a {
+    font-weight: 500;
+    text-decoration: inherit;
+    cursor: pointer;
+}
+
+/* unvisited link */
+a:link {
+    @include themed() {
+        color: t('text');
+    }
+}
+
+/* hovered link */
+a:hover {
+    @include themed() {
+        color: t('link-hover');
+    }
+    transition: 0.3s;
+}
+
+/* selected link */
+a:active {
+    @include themed() {
+        color: t('link-active');
+    }
+}
+
+body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    min-width: 200px;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+
+button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+button:hover {
+    border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+
+canvas {
+    @include themed() {
+        background: t('main-background');
+        color: t('text');
+    }
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixelated;
+    image-rendering: optimize-contrast;
+    transition: color var(--transition), background var(--transition);
+}
+
+::-webkit-scrollbar {
+    height: 12px;
+    width: 5px;
+    @include themed() {
+        background: t('main-background');
+    }
+}
+
+::-webkit-scrollbar-thumb {
+    @include themed() {
+        background: t('text');
+    }
+    -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+    @include themed() {
+        background: t('text');
+    }
+}
+
+.svgThemed svg {
+    @include themed() {
+        fill: t('text');
+    }
+    width: 50px;
+    height: 50px;
+}
+
+.hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.toggle-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.toggle {
+    @include themed() {
+        background: t('main-background');
+    }
+    height: 40px;
+    border-radius: 40px;
+    padding: 12px;
+    position: relative;
+    margin: auto; // Optional to center the toggle
+    cursor: pointer;
+    transition: color var(--transition), background var(--transition);
+}
+
+.toggle .icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    margin: 0 5px;
+    transition: all 0.25s;
+}
+
+.toggle .icons svg {
+    @include themed() {
+        stroke: t('text');
+    }
+    height: 30px;
+    width: 30px;
+    z-index: 0;
+    &:hover {
+        @include themed() {
+            stroke: t('title');
+            transition: stroke 0.25s;
+        }
+    }
+    transition: stroke 0.25s;
+}
+
+.toggle.enabled::before {
+    transform: translateX(65px);
+}
+
+.toggle input {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+}
+
+.container {
+    position: fixed;
+    inset: 0;
+}
+
+.innerContainer {
+    &.presentation {
+        &.right {
+            padding-top: 20vh;
+        }
+    }
+    width: 45vw;
+}
+
+.mainScreenContainer {
+    scroll-snap-align: start;
+}
+
+.finalScreenContainer {
+    scroll-snap-align: end;
+}
+
+.geoContainer {
+    z-index: -20;
+}
+
+.geoFormCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100vh;
+}
+
+.sectionContainer {
+    @include themed() {
+        background: t('main-background');
+    }
+    height: 100vh;
+    z-index: -5;
+    padding-top: 2vh;
+    scroll-snap-align: start;
+}
+
+@media screen and (min-width: 800px) {
+    .sectionContainer {
+        @include themed() {
+            background: t('main-background');
+        }
+        height: 100vh;
+        width: 80vw;
+        z-index: -5;
+        padding-top: 2vh;
+        scroll-snap-align: start;
+    }
+}
+
+.sectionsCard {
+    z-index: -5;
+}
+
+.sectionSpacer {
+    height: 100vh;
+    width: 60vw;
+}
+
+.navBarCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 60vw;
+}
+
+.hiddenNavBarCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 60vw;
+    display: none;
+}
+
+.navBar {
+    width: 100vw;
+    z-index: 10;
+    height: 5vh;
+    position: fixed;
+}
+
+@media screen and (min-width: 800px) {
+    .navBar {
+        width: 100vw;
+        margin-left: -10vw;
+        z-index: 10;
+        height: 6vh;
+    }
+}
+
+.navItems {
+    @include themed() {
+        background: t('main-background');
+    }
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 10;
+    height: 100%;
+}
+
+.navLink {
+    @include themed() {
+        color: t('text');
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+.navPi::before {
+    @include themed() {
+        color: t('title');
+    }
+    content: 'π';
+    font-size: 1.8rem;
+    position: inherit;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 60px;
+    display: flex;
+    margin-top: 0.2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.stickyCard:not(:empty) {
+    transition: display 2s ease;
+    position: sticky;
+    display: flex;
+    align-self: flex-end;
+    top: 0;
+    z-index: 10;
+}
+
+.stickyCard:empty {
+    transition: display 2s ease;
+    position: sticky;
+    display: none;
+    align-self: flex-end;
+    top: 1vh;
+}
+
+.piCard {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+    justify-content: center;
+}
+
+.piContainer {
+    @include themed() {
+        color: t('text');
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.piMain {
+    @include themed() {
+        color: t('title');
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vh;
+    height: 6vh;
+    width: 5vw;
+    margin-bottom: 12vh;
+    cursor: pointer;
+}
+
+.piEnd {
+    @include themed() {
+        color: t('title');
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vh;
+    height: 6vh;
+    width: 5vw;
+    margin-top: -2vh;
+    padding-top: 14vh;
+    cursor: pointer;
+}
+
+.piColumn {
+    position: absolute;
+    top: 46vh;
+    margin-left: auto;
+    margin-right: auto;
+    height: max-content;
+    text-align: center;
+    overflow: auto;
+    line-height: 13px;
+    white-space: nowrap;
+    user-select: none;
+    z-index: -1;
+    padding-bottom: 46vh;
+}
+
+.piWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (min-width: 800px) {
+    .piColumn {
+        position: absolute;
+        top: 46vh;
+        margin-left: auto;
+        margin-right: auto;
+        height: max-content;
+        text-align: center;
+        overflow: auto;
+        line-height: 13px;
+        white-space: nowrap;
+        user-select: none;
+        z-index: 0;
+        padding-bottom: 46vh;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8vh;
+}
+
+.paragraph {
+    height: 85vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    @include themed() {
+        color: t('title');
+    }
+    font-size: large;
+    font-weight: bold;
+    &.presentation {
+        font-size: 5vh;
+    }
+}
+
+.text {
+    @include themed() {
+        color: t('text');
+    }
+    font-size: medium;
+    text-align: justify;
+    margin: 2vh;
+
+    &.presentation {
+        font-size: large;
+    }
+}
+
+.spacerContainer {
+    display: flex;
+}
+
+.rightSpacer {
+    @include themed() {
+        border: 1px solid t('text');
+    }
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+    margin-left: auto;
+    margin-right: 0;
+    width: 45%;
+}
+
+.leftSpacer {
+    @include themed() {
+        border: 1px solid t('text');
+    }
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+    margin-left: 0;
+    margin-right: auto;
+    width: 45%;
+    align-self: flex-end;
+}
+
+.right .left {
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+@media screen and (min-width: 800px) {
+    .right {
+        width: 44%;
+        text-align: left;
+    }
+
+    .left {
+        width: 45%;
+        text-align: left;
+    }
+}
+
+.languages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 50vh;
+}
+
+.handContainer {
+    display: flex;
+    @include themed() {
+        stroke: t('text');
+    }
+    width: 40%;
+    height: min-content;
+    padding: 4%;
+    justify-content: center;
+}
+
+.titleMainLine {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .hi {
+        font-size: 4.35rem;
+    }
+}

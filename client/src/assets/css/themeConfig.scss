@@ -1,0 +1,14 @@
+$themes: (
+    light: (
+        text: $text--light,
+        title-color: $title--light,
+        alt-background: $alt-background--light,
+        main-background: $main-background--light
+    ),
+    dark: (
+        text: $text--dark,
+        title-color: $title--dark,
+        alt-background: $alt-background--dark,
+        main-background: $main-background--dark
+    )
+);

@@ -1,0 +1,57 @@
+// Light theme
+$text--light: #242424;
+$title--light: #fffcf5;
+$link-hover--light: #fed25a;
+$link-active--light: #fade93;
+$alt-background--light: white;
+$main-background--light: #fcba03;
+
+// Dark theme
+$text--dark: #fcba03;
+$title--dark: #fffcf5;
+$link-hover--dark: #fed25a;
+$link-active--dark: #fade93;
+$alt-background--dark: white;
+$main-background--dark: #242424;
+
+$themes: (
+    light: (
+        text: $text--light,
+        title: $title--light,
+        link-hover: $link-hover--light,
+        link-active: $link-active--light,
+        alt-background: $alt-background--light,
+        main-background: $main-background--light
+    ),
+    dark: (
+        text: $text--dark,
+        title: $title--dark,
+        link-hover: $link-hover--dark,
+        link-active: $link-active--dark,
+        alt-background: $alt-background--dark,
+        main-background: $main-background--dark
+    )
+);
+
+@mixin themed() {
+    @each $theme, $map in $themes {
+        .theme--#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), '#{$key}');
+                $theme-map: map-merge(
+                    $theme-map,
+                    (
+                        $key: $value
+                    )
+                ) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@function t($key) {
+    @return map-get($theme-map, $key);
+}

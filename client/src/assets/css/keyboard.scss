@@ -1,0 +1,160 @@
+@import './_theme.scss';
+
+#keyboard {
+    display: grid;
+    grid-template-columns: 40% 10% 40%;
+    justify-content: center;
+    .keyboard {
+        &-half {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-left {
+            grid-column: 1;
+        }
+
+        &-right {
+            grid-column: 3;
+        }
+
+        &-row {
+            display: flex;
+            width: auto;
+
+            &.left {
+                justify-content: flex-start;
+            }
+
+            &.right {
+                justify-content: flex-end;
+            }
+
+            &-key {
+                @include themed() {
+                    border: 1px solid t('text');
+                    background: t('main-background');
+                }
+                display: block;
+                height: 30px;
+                width: 33px;
+                border-radius: 5px;
+
+                &:hover {
+                    @include themed() {
+                        background: t('text');
+                    }
+                }
+
+                &.left {
+                    margin-right: 3px;
+                    justify-content: flex-start;
+                }
+
+                &.right {
+                    margin-left: 3px;
+                    justify-content: flex-end;
+                }
+
+                &.key0 {
+                    background: none !important;
+                    border: none;
+                }
+
+                &.key1 {
+                    margin-top: 2.5px;
+                }
+
+                &.key2 {
+                    margin-top: -5px;
+                }
+
+                &.key3 {
+                    margin-top: -4px;
+                }
+
+                &.key5 {
+                    border-radius: 50%;
+                    margin-top: 1px;
+                    margin-bottom: 1px;
+
+                    &::before {
+                        @include themed() {
+                            border: 1px solid t('text');
+                            background: t('main-background');
+                        }
+                        position: absolute;
+                        content: '';
+                        height: 5px;
+                        width: 5px;
+                        margin-top: 2px;
+                        margin-left: 11px;
+                        border-radius: 50%;
+                        z-index: 600;
+                    }
+
+                    &:hover {
+                        @include themed() {
+                            background: t('title');
+                        }
+                    }
+                }
+
+                &.key7 {
+                    transform: rotate(15deg);
+                    margin: 5px 8px;
+                    &.right {
+                        transform: rotate(-15deg);
+                    }
+                    &.left {
+                        transform: rotate(15deg);
+                    }
+                }
+
+                &.key8 {
+                    height: 60px;
+                    margin-top: 2px;
+
+                    &.right {
+                        transform: rotate(-30deg);
+                    }
+
+                    &.left {
+                        transform: rotate(30deg);
+                    }
+                }
+
+                &.key9 {
+                    height: 30px;
+                    width: 40px;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    border-bottom-left-radius: 0;
+                    border-bottom-right-radius: 0;
+
+                    &:hover {
+                        @include themed() {
+                            background: t('text');
+                        }
+                    }
+                }
+
+                &.key10 {
+                    height: 34px;
+                    width: 40px;
+                    margin-top: -3px;
+                    border-top-left-radius: 0;
+                    border-top-right-radius: 0;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+
+                    &:hover {
+                        @include themed() {
+                            background: t('text');
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

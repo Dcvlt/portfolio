@@ -1,0 +1,50 @@
+@import './_theme.scss';
+
+.overlayTrigger {
+    @include themed() {
+        background: t('text');
+    }
+    height: 10vh;
+    width: 80vw;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+}
+
+.overlayTriggerButton {
+    @include themed() {
+        color: t('main-background');
+        background: t('alt-background');
+    }
+    cursor: pointer;
+    width: 10vw;
+    height: 4vh;
+    z-index: 6;
+}
+
+.overlayBox {
+    @include themed() {
+        color: t('text');
+        background: t('main-background');
+    }
+    display: flex;
+    position: fixed;
+    inset: 0;
+    width: 200vw;
+    height: 200vw;
+    overflow-x: hidden;
+    border-radius: 100vw;
+    margin-top: -90vh;
+    margin-left: -50vw;
+    z-index: 7;
+}
+
+.overlayBoxContent {
+    position: absolute;
+    width: 100vw;
+    right: 0;
+    left: 50vw;
+    top: 95vh;
+    height: 100vh;
+    overflow-y: scroll;
+}
