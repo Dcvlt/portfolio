@@ -1,8 +1,8 @@
-# list app
+# Portfolio
 
 ## About / Synopsis
 
-- Technical evaluation under the guise of a list app
+- Simple portfolio with informations about my career. 
 
 - Client uses reactJS, Context API & scss.
 - Api is running on Node.js with express.
@@ -16,11 +16,5 @@
 ## Usage
 
 1. Follow installation procedure
-2. Register your user
-3. ????
+2. ????
 4. PROFIT!!!
-
-### Features
-
-- User auth system
-- List management per user
